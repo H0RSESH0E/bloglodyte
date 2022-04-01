@@ -2,6 +2,8 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
+
+// GET ALL POSTS AND DETAILS
 router.get('/', (req, res) => {
   console.log(req.session);
 
@@ -42,15 +44,17 @@ router.get('/', (req, res) => {
     });
 });
 
+
+// LOGIN PAGE
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('/dashboard'); 
     return;
   }
-
   res.render('login');
 });
 
+// GET A SPECIFIC POST
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -82,11 +86,10 @@ router.get('/post/:id', (req, res) => {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-
-      // serialize the data
-      const post = dbPostData.get({ plain: true });
-
-      // pass data to template
+      let post = dbPostData.get();
+      console.log('-------', post)
+      post = dbPostData.get({ plain: true });
+      console.log('7777777', post)
       res.render('single-post', {
         post,
         loggedIn: req.session.loggedIn
