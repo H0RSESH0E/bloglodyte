@@ -1,18 +1,7 @@
 <ol class="post-list">
   {{#each posts as |hb_variableName|}}
   <li>
-    <article class="post">
-      <div class="title">
-        <a href="{{hb_variableName.url}}" target="_blank">{{hb_variableName.title}}</a>
-        <span>({{hb_variableName.post_body}})</span>
-      </div>
-      <div class="meta">
-        {{hb_variableName.other}} point(s) by {{hb_variableName.user.username}} on
-        {{hb_variableName.created_at}}
-        |
-        <a href="/post/{{hb_variableName.id}}">{{hb_variableName.comments.length}} comment(s)</a>
-      </div>
-    </article>
+        {{> post-preview hb_variableName }}
   </li>
   {{/each}}
 </ol>
