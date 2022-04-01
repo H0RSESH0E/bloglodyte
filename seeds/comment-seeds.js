@@ -3,22 +3,22 @@ const { Comment } = require('../models');
 const commentData = [
   {
     user_id: 1,
-    post_id: 6,
+    post_id: 5,
     comment_text: 'lorem ipsum ... X'
   },
   {
     user_id: 1,
-    post_id: 7,
+    post_id: 3,
     comment_text: 'lorem ipsum ... Y'
   },
   {
     user_id: 1,
-    post_id: 8,
+    post_id: 4,
     comment_text: 'lorem ipsum ... Z'
   },
   {
     user_id: 2,
-    post_id: 6,
+    post_id: 5,
     comment_text: 'lorem ipsum ... AX'
   },
   {
@@ -53,7 +53,7 @@ const commentData = [
   },
   {
     user_id: 4,
-    post_id: 8,
+    post_id: 5,
     comment_text: 'lorem ipsum ... HX'
   },
   {

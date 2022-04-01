@@ -4,30 +4,30 @@ const userData = [
   {
     email: '1ABC@123.com',
     password: 'thesame',
-    username: 'Shirts'
+    username: 'Arrow'
   },
   {
     email: '2ABC@123.com',
     password: 'thesame',
-    username: 'Shorts'
+    username: 'Jessie'
   },
   {
     email: '3ABC@123.com',
     password: 'thesame',
-    username: 'Music'
+    username: 'Sam'
   },
   {
     email: '4ABC@123.com',
     password: 'thesame',
-    username: 'Hats'
+    username: 'Finley'
   },
   {
     email: '5ABC@123.com',
     password: 'thesame',
-    username: 'Shoes'
+    username: 'Dakota'
   },
 ];
 
-const seedUsers = () => User.bulkCreate(userData);
+const seedUsers = () => User.bulkCreate(userData, {individualHooks: true});
 
 module.exports = seedUsers;
