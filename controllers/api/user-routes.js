@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth.js');
+
 
 // READ all users from the database
 router.get('/', (req, res) => {
@@ -49,7 +51,7 @@ router.get('/:id', (req, res) => {
 });
 
 // CREATES a user and adds them to the database
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
 
   // EXAMPLE input expected:
   //
@@ -81,7 +83,7 @@ router.post('/', (req, res) => {
 
 
 // Receives the HTTP post query for logging in
-router.post('/login', (req, res) => {
+router.post('/login',  (req, res) => {
   console.log("req ---------- ", req.body)
   // EXAMPLE input expected:
   //
@@ -115,7 +117,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -127,7 +129,7 @@ router.post('/logout', (req, res) => {
 });
 
   // UPDATE user details
-  router.put('/:id', (req, res) => {
+  router.put('/:id', withAuth, (req, res) => {
 
     // EXAMPLE input expected (some or all properties):
     //
@@ -156,7 +158,7 @@ router.post('/logout', (req, res) => {
       });
   });
 
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
       where: {
         id: req.params.id
